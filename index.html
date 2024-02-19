@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+</head>
+
+<body>
+  
+  <label>Choose a movie genre:</label>
+  <select id="selectMovieGenre">
+    <option value="action" >Action</option>
+    <option value="comedy" >Comedy</option>
+    <option value="drama" >Drama</option>
+  </select>
+  <p id="movieGenreResult"></p>
+
+
+  <label>Select a weather condition:</label>
+  <select id="selectWeather">
+    <option value="sunny" >Sunny</option>
+    <option value="rainy" >Rainy</option>
+    <option value="snowy" >Snowy</option>
+  </select>
+  <p id="weatherResult"></p>
+  
+  <script>
+  //select movie genre
+    const selectMovieGenre = document.getElementById("selectMovieGenre");
+    const movieGenreResult = document.getElementById("movieGenreResult");
+
+    selectMovieGenre.addEventListener("change", function(){
+      const movieGenre = selectMovieGenre.value;
+      const movies = {
+        action: "Star Wars Saga",
+        comedy: "Yes Man",
+        drama: "Once Upon a Time in Hollywood"
+      };
+
+      movieGenreResult.textContent = `Recommended Action Movie: ${movies[movieGenre]}`;
+    })
+
+    //select weather
+    const selectWeather = document.getElementById("selectWeather");
+    const weatherResult = document.getElementById("weatherResult");
+
+    selectWeather.addEventListener("change", function(){
+      const weather = selectWeather.value;
+      const activies = [
+        {
+          weather: "sunny", 
+          activity: "Outdoor",
+          description: "Picnic in the park"
+        },
+        {
+          weather: "rainy", 
+          activity: "Indoor",
+          description: "Movie Marathon"
+        },
+        {
+          weather: "snowy", 
+          activity: "Outdoor",
+          description: "Build a snowman"
+        }
+      ];
+
+      for (let index = 0; index < activies.length; index++)
+        {
+          if (activies[index].weather == weather)
+          {
+            weatherResult.textContent = `${activies[index].activity} Activity Suggestion: ${activies[index].description}`
+          }
+        }
+    })
+    
+  </script>
+</body>
+
+</html>
