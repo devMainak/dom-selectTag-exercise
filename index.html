@@ -35,6 +35,16 @@
   </select>
   <button id="displayGreetingButton">Display Greeting</button>
   <p id="languageResult"></p>
+
+
+  <label>Choose a musical instrument:</label>
+  <select id="selectInstrument">
+    <option value="piano" >Piano</option>
+    <option value="violin" >Violin</option>
+    <option value="guitar" >Guitar</option>
+  </select>
+  <button id="displayFunFactButton">Display Fun Fact</button>
+  <p id="funFactResult"></p>
   
   <script>
   //select movie genre
@@ -104,7 +114,28 @@
 
     displayGreetingButton.addEventListener("click", function(){
       languageResult.textContent = `Common Greeting: ${greeting}!`
+    });
+
+    //display musical instrument fun fact
+    const selectInstrument = document.getElementById("selectInstrument");
+    const displayFunFactButton = document.getElementById("displayFunFactButton");
+    const funFactResult = document.getElementById("funFactResult");
+
+    let funFact; 
+    selectInstrument.addEventListener("change", function(){
+      const instrument = selectInstrument.value;
+      const funfactList = {
+        piano: "The piano has 88 keys",
+        violin: "The violin is a string instrument known for its sweet sound",
+        guitar: "The Guitar is one of the most popular musical instruments in the world."
+      }
+
+      funFact = funfactList[instrument];
     })
+
+    displayFunFactButton.addEventListener("click", function(){
+      funFactResult.textContent = `Fun Fact: ${funFact}.`
+    });
     
   </script>
 </body>
