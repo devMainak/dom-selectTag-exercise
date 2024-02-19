@@ -45,6 +45,16 @@
   </select>
   <button id="displayFunFactButton">Display Fun Fact</button>
   <p id="funFactResult"></p>
+
+
+  <label>Select a pet:</label>
+  <select id="selectPet">
+    <option value="cat" >Cat</option>
+    <option value="dog" >Dog</option>
+    <option value="bird" >Bird</option>
+  </select>
+  <button id="displayPetDescriptionButton">Display Fun Fact</button>
+  <p id="petDescriptionResult"></p>
   
   <script>
   //select movie genre
@@ -136,6 +146,28 @@
     displayFunFactButton.addEventListener("click", function(){
       funFactResult.textContent = `Fun Fact: ${funFact}.`
     });
+
+
+    //display selected pet description
+      const selectPet = document.getElementById("selectPet");
+      const displayPetDescriptionButton = document.getElementById("displayPetDescriptionButton");
+      const petDescriptionResult = document.getElementById("petDescriptionResult");
+
+      let petDescription; 
+      selectPet.addEventListener("change", function(){
+        const pet = selectPet.value;
+        const petDescriptionList = {
+          cat: "Cats are independent and playful",
+          dog: "Dogs are loyal and friendly companions",
+          bird: "Birds are low maintenance and interesting creatures who can learn to speak"
+        }
+
+        petDescription = petDescriptionList[pet];
+      })
+
+      displayPetDescriptionButton.addEventListener("click", function(){
+        petDescriptionResult.textContent = `Pet Description: ${petDescription}.`
+      });
     
   </script>
 </body>
