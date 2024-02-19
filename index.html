@@ -25,6 +25,16 @@
     <option value="snowy" >Snowy</option>
   </select>
   <p id="weatherResult"></p>
+
+
+  <label>Select a language:</label>
+  <select id="selectLanguage">
+    <option value="english" >English</option>
+    <option value="spanish" >Spanish</option>
+    <option value="french" >French</option>
+  </select>
+  <button id="displayGreetingButton">Display Greeting</button>
+  <p id="languageResult"></p>
   
   <script>
   //select movie genre
@@ -73,6 +83,27 @@
             weatherResult.textContent = `${activies[index].activity} Activity Suggestion: ${activies[index].description}`
           }
         }
+    });
+
+    //select language greeting
+    const selectLanguage = document.getElementById("selectLanguage");
+    const displayGreetingButton = document.getElementById("displayGreetingButton");
+    const languageResult = document.getElementById("languageResult");
+
+    let greeting; 
+    selectLanguage.addEventListener("change", function(){
+      const language = selectLanguage.value;
+      const greetingList = {
+        english: "Hello",
+        spanish: "Hola",
+        french: "Bonjour"
+      }
+
+      greeting = greetingList[language];
+    })
+
+    displayGreetingButton.addEventListener("click", function(){
+      languageResult.textContent = `Common Greeting: ${greeting}!`
     })
     
   </script>
